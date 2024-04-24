@@ -11,7 +11,7 @@ const DashboardLayout = ({ children }) => {
     <div className="w-screen h-screen relative">
       <aside className="absolute left-0 top-0 h-full w-[200px] border-r border-black/10">
         <div className="px-4 my-4">
-          <span className="text-3xl">MOOD</span>
+          <span className="text-3xl">MOODAY</span>
         </div>
         <div>
           <ul className="px-4">
@@ -26,7 +26,7 @@ const DashboardLayout = ({ children }) => {
       <div className="ml-[200px] h-full w-[calc(100vw-200px)]">
         <header className="h-[60px] border-b border-black/10">
           <nav className="px-4 h-full">
-            <div className="flex items-center justify-end h-full">
+            <div className="h-full w-full ps-6 flex items-center justify-end">
               <UserButton afterSignOutUrl="/" />
             </div>
           </nav>

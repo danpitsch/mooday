@@ -1,27 +1,56 @@
 'use client'
+
 import { updateEntry, deleteEntry } from '@/util/api'
 import { useState } from 'react'
 import { useAutosave } from 'react-autosave'
 import Spinner from './Spinner'
+import fontColorContrast from "font-color-contrast"
 import { useRouter } from 'next/navigation'
+import { Entry } from '@/util/db'
 
 const Editor = ({ entry }) => {
-  const [text, setText] = useState(entry.content)
-  const [currentEntry, setEntry] = useState(entry)
+  const typedEntry: Entry = entry as Entry
+  const [text, setText] = useState(typedEntry.content)
+  const [createdDate, setCreatedAt] = useState(typedEntry.createdAt)
+  const [currentEntry, setEntry] = useState(typedEntry)
   const [isSaving, setIsSaving] = useState(false)
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
+  const localCreatedAt: Date = new Date(typedEntry.createdAt.valueOf() - (typedEntry.createdAt.getTimezoneOffset() * 60000))
+
   const handleDelete = async () => {
-    await deleteEntry(entry.id)
+    await deleteEntry(typedEntry.id)
     router.push('/journal')
   }
+
   useAutosave({
     data: text,
     onSave: async (_text) => {
-      if (_text === entry.content) return
+      if (_text === typedEntry.content) return
       setIsSaving(true)
 
-      const { data } = await updateEntry(entry.id, { content: _text })
+      let utcCreatedAt = new Date(typedEntry.createdAt.valueOf())
+      typedEntry.createdAt = utcCreatedAt
+      typedEntry.analysis.createdAt = utcCreatedAt
+      typedEntry.content = _text
+      const { data } = await updateEntry(typedEntry.id, { content: _text, createdAt: utcCreatedAt})
+
+      setEntry(data)
+      setIsSaving(false)
+    },
+  })
+
+  useAutosave({
+    data: createdDate,
+    onSave: async (_createdDate) => {
+      if (_createdDate === typedEntry.createdAt) return
+      setIsSaving(true)
+
+      let utcCreatedAt = new Date(_createdDate.valueOf())
+      typedEntry.createdAt = utcCreatedAt
+      typedEntry.analysis.createdAt = utcCreatedAt
+      const { data } = await updateEntry(typedEntry.id, typedEntry)
 
       setEntry(data)
       setIsSaving(false)
@@ -30,46 +59,68 @@ const Editor = ({ entry }) => {
 
   return (
     <div className="w-full h-full grid grid-cols-3 gap-0 relative">
-      <div className="absolute left-0 top-0 p-2">
-        {isSaving ? (
-          <Spinner />
-        ) : (
-          <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
-        )}
-      </div>
       <div className="col-span-2">
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="w-full h-full text-xl p-8"
-        />
+        <div>
+          <ul role="list" className="divide-y divide-gray-200">
+            <li className="text-1 py-4 pl-12 pr-4 flex items-center justify-right">
+              <h2 className="text-2xl pr-4">Created:</h2>
+              <input
+                type="datetime-local"
+                id="createdAt"
+                defaultValue={localCreatedAt.toISOString().slice(0, 16)}
+                onBlur={(e) => setCreatedAt(new Date(e.target.value))}
+                className="text-1 border border-gray-300 rounded-md p-2 text-lg"
+              />
+            </li>
+            <li className="py-4 px-4 flex items-center justify-between">
+              <div className="relative left-0 top-0 p-2">
+                {isSaving ? (
+                  <Spinner />
+                ) : (
+                  <div className="w-[20px] h-[20px] rounded-full bg-green-500"></div>
+                )}
+              </div>
+              <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                className="w-full h-full text-1 border border-gray-300 px-8 py-4"
+                autoFocus={true}
+                rows={5}
+              />
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="border-l border-black/5">
         <div
-          style={{ background: currentEntry.analysis.color }}
-          className="h-[100px] bg-blue-600 text-white p-8"
-        >
-          <h2 className="text-2xl bg-white/25 text-black">Analysis</h2>
+          style={{ background: currentEntry.analysis.color, color: fontColorContrast(currentEntry.analysis.color) }}>
+          <h2 className="text-2xl pt-2 pb-1 px-6 flex justify-center">Mood Analysis</h2>
+          <p className="text-l font-semibold pt-1 pb-2 px-6 flex justify-center">{currentEntry.analysis.mood.toUpperCase()}</p>
         </div>
         <div>
           <ul role="list" className="divide-y divide-gray-200">
-            <li className="py-4 px-8 flex items-center justify-between">
-              <div className="text-xl font-semibold w-1/3">Subject</div>
-              <div className="text-xl">{currentEntry.analysis.subject}</div>
+            <li className="py-4 px-4 flex items-center justify-between">
+              <div className="text-l font-semibold w-1/3">Summary</div>
+              <div className="text-l px-4">{currentEntry.analysis.summary}</div>
             </li>
 
-            <li className="py-4 px-8 flex items-center justify-between">
-              <div className="text-xl font-semibold">Mood</div>
-              <div className="text-xl">{currentEntry.analysis.mood}</div>
+            <li className="py-4 px-4 flex items-center justify-between">
+              <div className="text-l font-semibold w-1/3">Subject</div>
+              <div className="text-l px-4">{currentEntry.analysis.subject}</div>
             </li>
 
-            <li className="py-4 px-8 flex items-center justify-between">
-              <div className="text-xl font-semibold">Negative</div>
-              <div className="text-xl">
+            <li className="py-4 px-4 flex items-center justify-between">
+              <div className="text-l font-semibold">Mood</div>
+              <div className="text-l px-4">{currentEntry.analysis.mood}</div>
+            </li>
+
+            <li className="py-4 px-4 flex items-center justify-between">
+              <div className="text-l font-semibold">Negative</div>
+              <div className="text-l px-4 ">
                 {currentEntry.analysis.negative ? 'True' : 'False'}
               </div>
             </li>
-            <li className="py-4 px-8 flex items-center justify-between">
+            <li className="py-4 px-4 flex items-center justify-between">
               <button
                 onClick={handleDelete}
                 type="button"

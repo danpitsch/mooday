@@ -1,0 +1,214 @@
+JournalPage -> data [
+  {
+    id: '617e2717-6f5a-4964-aad1-e5a0b3e08132',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-23T16:00:00.000Z,
+    updatedAt: 2024-04-24T15:16:57.033Z,
+    content: 'Feeling pretty good that I have finished up my mood journal, and it seems to be working well.  Am looking forward to applying the AI techniques to the two other projects I 
+am working on.',
+    statusId: 1,
+    analysis: {
+      id: 'd9111c3b-f369-4c18-b77e-493a522b1e1a',
+      createdAt: 2024-04-23T16:00:00.000Z,
+      updatedAt: 2024-04-24T15:16:59.402Z,
+      entryId: '617e2717-6f5a-4964-aad1-e5a0b3e08132',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'good',
+      subject: 'completion of mood journal',
+      negative: false,
+      summary: 'Finished mood journal, excited for AI projects.',
+      color: '#00ff00',
+      sentimentScore: 8
+    }
+  },
+  {
+    id: '67705a75-7819-44bb-82a5-17a459b6994c',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-22T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:03:37.628Z,
+    content: "I dedicated most of today to a personal project I've been putting off. Despite feeling a bit overwhelmed at times, I made significant progress and managed to break through 
+some creative blocks. Ending the day with a sense of satisfaction and determination to keep pushing forward.",
+    statusId: 1,
+    analysis: {
+      id: '6b9096ce-7d38-4ea5-bb1f-f9f65f7b8810',
+      createdAt: 2024-04-22T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:03:39.040Z,
+      entryId: '67705a75-7819-44bb-82a5-17a459b6994c',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'productive',
+      subject: 'personal project',
+      negative: false,
+      summary: 'Made significant progress on personal project, feeling satisfied and determined.',
+      color: '#32CD32',
+      sentimentScore: 8
+    }
+  },
+  {
+    id: '9ec14cbc-7bf2-47aa-815d-45f69e6553e0',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-22T17:00:00.000Z,
+    updatedAt: 2024-04-24T06:03:57.089Z,
+    content: 'Had a great meeting with Anthony, moving forward with SA installation on AWS.',
+    statusId: 1,
+    analysis: {
+      id: '07d3932c-efe0-4666-a3dc-eb48a60337db',
+      createdAt: 2024-04-22T17:00:00.000Z,
+      updatedAt: 2024-04-24T06:03:58.929Z,
+      entryId: '9ec14cbc-7bf2-47aa-815d-45f69e6553e0',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'positive',
+      subject: 'meeting with Anthony',
+      negative: false,
+      summary: 'Great meeting with Anthony, moving forward with SA installation on AWS.',
+      color: '#00ff00',
+      sentimentScore: 8
+    }
+  },
+  {
+    id: '4cd44c20-da9f-4119-92a6-59b85139ba95',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-20T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:03:18.401Z,
+    content: 'Today was a bummer day, Dickey Betts died at 80.  He was not as awesome as Duane Allman, but he did help keep the band going for a long time.',
+    statusId: 1,
+    analysis: {
+      id: 'c1ddb50c-d9a6-4264-8ae3-9ab7b57b7292',
+      createdAt: 2024-04-20T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:03:20.001Z,
+      entryId: '4cd44c20-da9f-4119-92a6-59b85139ba95',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'sad',
+      subject: 'Dickey Betts passing',
+      negative: true,
+      summary: 'Dickey Betts passing, a bummer day.',
+      color: '#0000FF',
+      sentimentScore: -7
+    }
+  },
+  {
+    id: '37863634-f05b-4bdf-a3bd-071c4317264e',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-19T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:02:45.651Z,
+    content: 'Encountered moments of inspiration today that reignited my passion for creativity. Whether it was a captivating piece of art or a meaningful conversation, I felt a fire within me to pursue my dreams with renewed vigor. Excited to channel this energy into my projects and see where it leads. ',
+    statusId: 1,
+    analysis: {
+      id: '8ddea723-b88e-4129-b93d-ad7650f023bb',
+      createdAt: 2024-04-19T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:02:47.442Z,
+      entryId: '37863634-f05b-4bdf-a3bd-071c4317264e',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'inspired',
+      subject: 'moments of inspiration',
+      negative: false,
+      summary: 'Encountered moments of inspiration that reignited my passion for creativity.',
+      color: '#FFD700',
+      sentimentScore: 8
+    }
+  },
+  {
+    id: '7e0de8f1-6d89-45d6-a4ee-2d8b59e60f24',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-18T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:02:17.479Z,
+    content: 'Today was an okay day. The stock market went up .5% but none of my stocks increased.',
+    statusId: 1,
+    analysis: {
+      id: 'd3183149-1af1-4116-84f9-00dac7f1ee49',
+      createdAt: 2024-04-18T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:02:18.897Z,
+      entryId: '7e0de8f1-6d89-45d6-a4ee-2d8b59e60f24',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'okay',
+      subject: 'daily events',
+      negative: false,
+      summary: 'Stock market up, personal stocks stagnant.',
+      color: '#808080',
+      sentimentScore: 2
+    }
+  },
+  {
+    id: 'bb81bbe1-68b6-48a3-bf89-54426562741b',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-18T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:02:00.023Z,
+    content: 'Feeling a little down, am really tired of recruiters ghosting me for whatever reason.  Would be nice if they would send you a text or email saying that they went another direction. ',
+    statusId: 1,
+    analysis: {
+      id: '8653cae9-6991-41a0-9aca-46bf8bcf4dae',
+      createdAt: 2024-04-18T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:02:01.901Z,
+      entryId: 'bb81bbe1-68b6-48a3-bf89-54426562741b',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'down',
+      subject: 'recruiters ghosting',
+      negative: true,
+      summary: 'Tired of recruiters ghosting me, wish they would communicate.',
+      color: '#0000ff',
+      sentimentScore: -7
+    }
+  },
+  {
+    id: 'a2e46032-2863-4c04-9d55-9f6ef5caf41c',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-16T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:01:48.018Z,
+    content: 'Today was a really great day. I finally was able to grab that pair of shoes I have been dying to get. ',
+    statusId: 1,
+    analysis: {
+      id: '55bfe742-35c0-499b-9a85-1103aaf0aa64',
+      createdAt: 2024-04-16T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:01:49.324Z,
+      entryId: 'a2e46032-2863-4c04-9d55-9f6ef5caf41c',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'happy',
+      subject: 'shopping',
+      negative: false,
+      summary: 'Got the shoes I wanted!',
+      color: '#ff0000',
+      sentimentScore: 8
+    }
+  },
+  {
+    id: '65593304-d995-470c-afd4-afa3ae0c40cb',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-13T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:01:16.339Z,
+    content: "Today was a little depressing, the temperature was below freezing overnight and barely got into the 40's during the day. ",
+    statusId: 1,
+    analysis: {
+      id: 'c5563c80-c395-4887-b8a0-904596abd69f',
+      createdAt: 2024-04-13T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:01:17.841Z,
+      entryId: '65593304-d995-470c-afd4-afa3ae0c40cb',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'depressing',
+      subject: 'weather',
+      negative: true,
+      summary: "Cold weather, below freezing overnight and barely reaching 40's during the day.",
+      color: '#0000ff',
+      sentimentScore: -7
+    }
+  },
+  {
+    id: 'bc2d4d7e-982a-4a4d-822a-d034dd767978',
+    userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+    createdAt: 2024-04-08T22:00:00.000Z,
+    updatedAt: 2024-04-24T06:00:08.483Z,
+    content: 'Today was super awesome, my Grand-daughter and I traveled to Southern Indiana and saw the total eclipse.  We had clear skies and experienced 4 minutes of totality.  It is the second eclipse that we have gone to together, and is was an amazing experience again.',
+    statusId: 1,
+    analysis: {
+      id: 'dc9d356e-a11f-45bf-8489-4c0c114926b5',
+      createdAt: 2024-04-08T22:00:00.000Z,
+      updatedAt: 2024-04-24T06:00:10.399Z,
+      entryId: 'bc2d4d7e-982a-4a4d-822a-d034dd767978',
+      userId: 'c51ae80d-d7f3-453c-a961-d8a8bfde1c00',
+      mood: 'happy',
+      subject: 'Total Eclipse Trip',
+      negative: false,
+      summary: 'Amazing total eclipse experience with my Grand-daughter!',
+      color: '#0101fe',
+      sentimentScore: 9
+    }
+  }
+]

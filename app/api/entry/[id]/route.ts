@@ -1,7 +1,7 @@
 import { update } from '@/util/actions'
 import { analyzeEntry } from '@/util/ai'
 import { getUserFromClerkID } from '@/util/auth'
-import { prisma } from '@/util/db'
+import { Entry, prisma } from '@/util/db'
 import { NextResponse } from 'next/server'
 
 export const DELETE = async (request: Request, { params }) => {
@@ -22,7 +22,10 @@ export const DELETE = async (request: Request, { params }) => {
 }
 
 export const PATCH = async (request: Request, { params }) => {
-  const { updates } = await request.json()
+  const updates = await request.json()
+  const typedEntry: Entry = updates.updates as Entry
+  const { content, createdAt } = typedEntry
+
   const user = await getUserFromClerkID()
 
   const entry = await prisma.journalEntry.update({
@@ -32,15 +35,22 @@ export const PATCH = async (request: Request, { params }) => {
         userId: user.id,
       },
     },
-    data: updates,
+    data: {
+      content: content,
+      createdAt: createdAt
+    },
   })
 
   const analysis = await analyzeEntry(entry)
+  
   const savedAnalysis = await prisma.entryAnalysis.upsert({
     where: {
       entryId: entry.id,
     },
-    update: { ...analysis },
+    update: {
+      createdAt: typedEntry.createdAt,
+      ...analysis
+    },
     create: {
       entryId: entry.id,
       userId: user.id,

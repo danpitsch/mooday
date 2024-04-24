@@ -3,9 +3,10 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
+  // provider     = "mysql"
+  provider = "sqlite"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  // relationMode = "prisma"
 }
 
 model User {
@@ -29,10 +30,16 @@ model Account {
   @@unique([userId])
 }
 
-enum JOURNAL_ENTRY_STATUS {
-  DRAFT
-  PUBLISHED
-  ARCHIVED
+// enum JOURNAL_ENTRY_STATUS {
+//   DRAFT
+//   PUBLISHED
+//   ARCHIVED
+// }
+
+model JournalEntryStatus {
+  id     Int            @id @default(autoincrement())
+  status String         @unique
+  // entry  JournalEntry[]
 }
 
 model JournalEntry {
@@ -42,10 +49,11 @@ model JournalEntry {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  content String               @db.Text
-  status  JOURNAL_ENTRY_STATUS @default(DRAFT)
+  content  String
+  statusId Int
+  // status   JournalEntryStatus @relation(fields: [statusId], references: [id])
   analysis EntryAnalysis?
-  
+
   @@unique([userId, id])
 }
 
@@ -55,16 +63,20 @@ model EntryAnalysis {
   updatedAt DateTime @updatedAt
 
   entryId String
-  entry JournalEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  entry   JournalEntry @relation(fields: [entryId], references: [id], onDelete: Cascade)
 
   userId String
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  mood String @db.Text
-  subject String @db.Text
-  negative Boolean
-  summary String @db.Text
-  color String @db.Text @default("#0101fe")
+  // mood String @db.Text
+  mood           String
+  // subject String @db.Text
+  subject        String
+  negative       Boolean
+  // summary String @db.Text
+  summary        String
+  // color String @db.Text @default("#0101fe")
+  color          String  @default("#0101fe")
   sentimentScore Float
 
   @@unique([entryId])

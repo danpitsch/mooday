@@ -19,22 +19,26 @@ const Question = () => {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          className="border border-gray-300 rounded-md p-2 text-lg"
-          disabled={loading}
-          placeholder="Ask a question..."
-        />
-        <button
-          disabled={loading}
-          type="submit"
-          className="bg-blue-400 px-4 py-2 rounded-md"
-        >
-          Ask
-        </button>
+      <form
+        onSubmit={handleSubmit}
+      >
+        <div className="flex space-x-4">
+          <input
+            type="text"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            className="flex-1 text-lg px-4 py-2 border border-gray-200 rounded-md"
+            disabled={loading}
+            placeholder="Ask a question..."
+          />
+          <button
+            disabled={loading}
+            type="submit"
+            className="flex-none w-15 text-lg bg-blue-400 px-4 py-2 rounded-md"
+          >
+            Ask
+          </button>
+        </div>
       </form>
       {loading && <p>Loading...</p>}
       {answer && <p className="my-4 text-xl">{answer}</p>}

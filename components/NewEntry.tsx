@@ -17,7 +17,7 @@ const NewEntry = () => {
       className="cursor-pointer overflow-hidden rounded-lg bg-white shadow"
       onClick={handleOnClick}
     >
-      <div className="px-4 py-5 sm:p-6">
+      <div className="px-4 py-4 sm:p-4">
         <span className="text-3xl">New Entry</span>
       </div>
     </div>

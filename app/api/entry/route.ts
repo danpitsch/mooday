@@ -9,6 +9,7 @@ export const POST = async (request: Request) => {
   const entry = await prisma.journalEntry.create({
     data: {
       content: data.content,
+      statusId: 1,
       user: {
         connect: {
           id: user.id,
