@@ -17,6 +17,10 @@ export const deleteEntry = async (id) => {
 }
 
 export const newEntry = async () => {
+  console.log("/util/api.tx > newEntry() > BASE_URL_APP:", process.env.BASE_URL_APP)
+  console.log("/util/api.tx > newEntry() > BASE_URL_API:", process.env.BASE_URL_API)
+  console.log("/util/api.tx > newEntry() > window.location.origin:", window.location.origin)
+
   const res = await fetch(
     new Request(createURL('/api/entry'), {
       method: 'POST',
