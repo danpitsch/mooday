@@ -4,7 +4,7 @@ import { updateEntry, deleteEntry } from '@/util/api'
 import { useState } from 'react'
 import { useAutosave } from 'react-autosave'
 import Spinner from './Spinner'
-import fontColorContrast from "font-color-contrast"
+import fontColorContrast from 'font-color-contrast'
 import { useRouter } from 'next/navigation'
 import { Entry } from '@/util/db'
 
