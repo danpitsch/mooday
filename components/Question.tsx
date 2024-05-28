@@ -25,6 +25,7 @@ const Question = () => {
         <div className="flex space-x-4">
           <input
             type="text"
+            id="question"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             className="flex-1 text-lg px-4 py-2 border border-gray-200 rounded-md"
