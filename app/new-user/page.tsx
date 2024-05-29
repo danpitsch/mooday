@@ -1,10 +1,13 @@
 import { prisma } from '@/util/db'
-import { currentUser } from '@clerk/nextjs/server'
+import { currentUser, User } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 
 const createNewUser = async () => {
-  const user = await currentUser()
-  console.log(user)
+  const user: User = await currentUser() as User
+
+  if (!user) {
+    return redirect('/sign-in')
+  }
 
   const match = await prisma.user.findUnique({
     where: {

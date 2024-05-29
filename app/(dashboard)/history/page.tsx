@@ -1,9 +1,15 @@
 import HistoryChart from '@/components/HistoryChart'
-import { getUserFromClerkID } from '@/util/auth'
+import { currentUser, User } from '@clerk/nextjs/server'
 import { prisma } from '@/util/db'
+import { redirect } from 'next/navigation'
 
 const getData = async () => {
-  const user = await getUserFromClerkID()
+  const user: User = await currentUser() as User
+
+  if (!user) {
+    return redirect('/')
+  }
+  // const user = await getUserFromClerkID()
   const analyses = await prisma.entryAnalysis.findMany({
     where: {
       userId: user.id,
