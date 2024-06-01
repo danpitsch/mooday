@@ -1,15 +1,17 @@
 import HistoryChart from '@/components/HistoryChart'
 import { currentUser, User } from '@clerk/nextjs/server'
 import { prisma } from '@/util/db'
+import { getUserFromClerkID } from '@/util/auth'
 import { redirect } from 'next/navigation'
 
 const getData = async () => {
-  const user: User = await currentUser() as User
+  const clrkUser: User = await currentUser() as User
 
-  if (!user) {
+  if (!clrkUser) {
     return redirect('/')
   }
-  // const user = await getUserFromClerkID()
+  // console.log("/app/(dashboard)/history/page.tsx > getData() > user: ", clrkUser)
+  const user = await getUserFromClerkID()
   const analyses = await prisma.entryAnalysis.findMany({
     where: {
       userId: user.id,
@@ -18,6 +20,7 @@ const getData = async () => {
       createdAt: 'asc',
     },
   })
+  // console.log("/app/(dashboard)/history/page.tsx > getData() > analyses: ", analyses)
   const total = analyses.reduce((acc, curr) => {
     return acc + curr.sentimentScore
   }, 0)
